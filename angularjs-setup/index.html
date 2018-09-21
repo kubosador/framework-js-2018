@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hello</title>
+</head>
+
+<body ng-app="HelloWorldApp" >
+    
+    <div ng-controller="HelloController" class="container" >
+        
+        <div ng-repeat="message in messages" >        
+            <input ng-model="message.msg" /> {{ message.msg }}
+        </div>
+        
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.2/angular.min.js"></script>
+
+    <script>
+    var HelloController = function($scope) {
+        $scope.messages = [
+            {"msg": "Super!"},
+            {"msg": "Tuto!"},
+            {"msg": "5 min!"}
+        ]
+    };
+    // register our controller/s
+    angular.module('HelloWorldApp.controllers', [])
+        .controller("HelloController", HelloController);
+    
+    // this is our global app: 
+    angular.module('HelloWorldApp', ['HelloWorldApp.controllers']);
+    </script>
+</body>
+</html>
